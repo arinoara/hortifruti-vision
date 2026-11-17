@@ -1,0 +1,15 @@
+# Segredos
+.env
+
+# Ambiente / cache
+.venv/
+venv/
+__pycache__/
+*.pyc
+.chroma/
+
+# Saídas geradas em execução
+capturas/*
+!capturas/.gitkeep
+cupons/*
+!cupons/.gitkeep
