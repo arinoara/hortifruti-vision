@@ -107,10 +107,22 @@ Dependências (`requirements.txt`): `openai` (SDK usado com o OpenRouter),
 
 ### Chave de API (arquivo `.env`)
 
-O programa lê a chave do arquivo `.env`, que **não** está no código e está no `.gitignore`.
+O programa lê a chave do arquivo `.env`, que **não** está no código e está no
+`.gitignore`. Por isso ele **não vem no repositório** e precisa ser adicionado
+manualmente **na raiz do projeto** (mesma pasta do `main.py`):
 
-- **Professor:** o `.env` entregue no .zip **já contém uma chave de teste**
-  com limite de crédito. Não é preciso fazer nada.
+```
+hortifruti_vision/
+├── .env        ← coloque o arquivo aqui
+├── main.py
+└── ...
+```
+
+- **Professor:** o arquivo `.env` será **enviado junto com a prática**, já com
+  uma chave de teste (com limite de crédito). Basta copiá-lo para a pasta
+  `hortifruti_vision/`. Sem ele, o programa não consegue chamar a API.
+  Atenção: por começar com ponto, o arquivo pode ficar oculto no gerenciador
+  de arquivos (use `ls -a` para conferir).
 - **Para usar a sua própria chave:** copie o modelo e edite:
   ```bash
   cp .env.example .env
