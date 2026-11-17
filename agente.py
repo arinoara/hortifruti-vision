@@ -96,7 +96,7 @@ class AgenteReAct:
                 op.mostrar("   " + linha, "pensamento")
 
     def executar(self, identificacao: dict) -> str:
-        self.ferramentas.reiniciar()
+        self.ferramentas.reiniciar(identificacao)
         op = self.ferramentas.operador
         mensagens = [
             {"role": "system", "content": self.prompt_sistema},

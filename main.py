@@ -47,7 +47,8 @@ class Aplicacao:
         self.catalogo = Catalogo(config.CATALOGO_CSV, config.CHROMA_DIR)
         self.pdv = PDVSimulado(config.CUPONS_DIR)
         self.cliente = config.criar_cliente()
-        self.ferramentas = Ferramentas(self.catalogo, self.pdv, self.operador)
+        self.ferramentas = Ferramentas(self.catalogo, self.pdv, self.operador,
+                                       config.CONFIANCA_MINIMA, config.CONFIRMAR_VARIEDADE)
         self.agente = AgenteReAct(self.cliente, config.MODELO, self.ferramentas,
                                   config.MAX_PASSOS_REACT, config.CONFIANCA_MINIMA)
 

@@ -35,6 +35,15 @@ preço, peso e valor nunca vêm do texto gerado pelo modelo**. Eles vêm do
 catálogo, da balança e do PDV. A ferramenta `registrar_pdv` recusa códigos
 inexistentes e exige a leitura de peso ou quantidade antes do registro.
 
+**Confirmação de variedade pelo operador:** antes de registrar, se o produto
+tiver mais de uma variedade no catálogo (ex.: banana prata, caturra/nanica,
+maçã, da terra) e a identificação visual tiver dúvida (confiança abaixo de
+`CONFIANCA_MINIMA` **ou** alternativas listadas), o próprio código, e não o
+LLM, mostra ao operador todas as variedades do catálogo para escolher.
+Enter confirma a sugestão da IA, um número escolhe outra, `0` cancela o item
+e um texto livre (ex.: `caturra`) faz uma nova busca no RAG. Essa regra é
+controlada por `CONFIRMAR_VARIEDADE` no `.env`.
+
 ```
 [Webcam / arquivo] ──► Etapa 1: LLM multimodal (Zero-Shot, saída JSON)
                                   │
@@ -110,8 +119,10 @@ O programa lê a chave do arquivo `.env`, que **não** está no código e está 
   As chaves são criadas em https://openrouter.ai/keys.
 
 Outras variáveis do `.env`: `OPENROUTER_MODEL` (padrão `google/gemini-2.5-flash-lite`,
-que precisa aceitar imagem), `CAMERA_INDICE` (padrão 0), `CONFIANCA_MINIMA` (padrão 0.7)
-e `MAX_PASSOS_REACT` (padrão 8).
+que precisa aceitar imagem), `CAMERA_INDICE` (padrão 0), `CONFIANCA_MINIMA` (padrão 0.7),
+`MAX_PASSOS_REACT` (padrão 8) e `CONFIRMAR_VARIEDADE` (padrão `auto`:
+pergunta só quando há dúvida; `sempre`: pergunta em todo produto com mais de
+uma variedade; `nunca`: confia na IA).
 
 > **Primeira execução:** o ChromaDB baixa automaticamente o modelo de
 > embeddings (~80 MB, uma única vez) e indexa o catálogo na pasta `.chroma/`.

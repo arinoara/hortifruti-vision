@@ -42,6 +42,32 @@ class OperadorTerminal:
                 return resp  # operador digitou uma resposta livre
             print("   Opção inválida.")
 
+    def escolher_item(self, pergunta: str, itens: list[dict], padrao: int = 0,
+                      rotulo: str = "sugestão da IA") -> dict | str | None:
+        """Lista itens do catálogo para o operador escolher.
+
+        Retorna o item escolhido (Enter = item padrão), um texto livre digitado
+        pelo operador (para nova busca no catálogo) ou None se cancelar.
+        """
+        print(colorir(f"\n🙋 CONFIRMAÇÃO DO OPERADOR: {pergunta}", "alerta"))
+        for i, item in enumerate(itens, 1):
+            marca = f"  ← {rotulo}" if i - 1 == padrao else ""
+            print(f"   [{i}] {item['codigo']}  {item['nome']} {item['variedade']}"
+                  f"  (R$ {item['preco']:.2f}/{item['unidade']}){marca}")
+        print("   [0] Cancelar este item")
+        print("   (ou digite o nome de outro produto para buscar no catálogo)")
+        while True:
+            resp = input(f"   Escolha [Enter = {padrao + 1}]: ").strip()
+            if not resp:
+                return itens[padrao]
+            if resp == "0":
+                return None
+            if resp.isdigit() and 1 <= int(resp) <= len(itens):
+                return itens[int(resp) - 1]
+            if not resp.isdigit():
+                return resp
+            print("   Opção inválida.")
+
     def ler_peso(self) -> float:
         """Balança simulada: o operador digita o peso (ou Enter = aleatório)."""
         while True:

@@ -21,6 +21,8 @@ CAPTURAS_DIR = BASE_DIR / "capturas"
 CAMERA_INDICE = int(os.getenv("CAMERA_INDICE", "0"))
 MAX_PASSOS_REACT = int(os.getenv("MAX_PASSOS_REACT", "8"))
 CONFIANCA_MINIMA = float(os.getenv("CONFIANCA_MINIMA", "0.7"))
+# auto = confirma variedade se confiança < mínima ou se a IA listou alternativas
+CONFIRMAR_VARIEDADE = os.getenv("CONFIRMAR_VARIEDADE", "auto").strip().lower()
 
 
 def criar_cliente() -> OpenAI:
