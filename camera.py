@@ -1,10 +1,23 @@
 """Captura de imagem pela webcam (OpenCV) e preparo da imagem para o LLM."""
 
 import base64
+import os
+import sys
 from datetime import datetime
 from pathlib import Path
 
 import cv2
+
+# Evita avisos do Qt embutido no opencv-python no Linux (só afeta este processo):
+# - o Qt dele não suporta Wayland e avisa ao cair para X11/XWayland;
+# - o cv2 aponta QT_QPA_FONTDIR para uma pasta que não existe no pacote,
+#   então usamos as fontes do sistema. Precisa vir depois do "import cv2".
+if sys.platform.startswith("linux"):
+    if os.environ.get("XDG_SESSION_TYPE") == "wayland":
+        os.environ["XDG_SESSION_TYPE"] = "x11"
+    _FONTES = Path("/usr/share/fonts/truetype/dejavu")
+    if _FONTES.is_dir():
+        os.environ["QT_QPA_FONTDIR"] = str(_FONTES)
 
 TITULO_JANELA = "Hortifruti Vision - ESPACO captura | ESC cancela"
 

@@ -16,7 +16,7 @@ PROMPT_VISAO = """Você é o módulo de visão computacional de um caixa de hort
 Analise a imagem e identifique o produto hortifruti principal.
 
 Descreva com atenção as características visuais que diferenciam variedades
-(ex.: banana prata x nanica, limão taiti x siciliano, maçã gala x fuji):
+(ex.: banana prata x caturra (nanica), limão taiti x siciliano, maçã gala x fuji):
 cor, formato, textura da casca, tamanho relativo.
 
 Responda SOMENTE com um JSON válido, sem texto extra, neste formato:

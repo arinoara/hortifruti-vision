@@ -63,6 +63,8 @@ inexistentes e exige a leitura de peso ou quantidade antes do registro.
 
 Requisitos: **Python 3.12+**, webcam (opcional) e conexão com a internet.
 
+### Opção A: com `pip` (venv padrão do Python)
+
 ```bash
 # 1. Entre na pasta do projeto
 cd hortifruti_vision
@@ -73,8 +75,23 @@ source .venv/bin/activate          # Linux/macOS
 # .venv\Scripts\activate           # Windows
 
 # 3. Instale as dependências
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
+
+### Opção B: com [`uv`](https://docs.astral.sh/uv/)
+
+```bash
+cd hortifruti_vision
+uv venv --python 3.12 .venv
+source .venv/bin/activate          # Linux/macOS
+# .venv\Scripts\activate           # Windows
+uv pip install -r requirements.txt
+```
+
+> **Erro `Comando 'pip' não encontrado`?** Provavelmente o `.venv` foi criado
+> com o `uv`, que não coloca o `pip` dentro do ambiente. Não instale o `python3-pip` do sistema. Use
+> `uv pip install -r requirements.txt` ou, se preferir o pip, rode
+> `python -m ensurepip` antes de `python -m pip install -r requirements.txt`.
 
 Dependências (`requirements.txt`): `openai` (SDK usado com o OpenRouter),
 `python-dotenv`, `chromadb` e `opencv-python`.

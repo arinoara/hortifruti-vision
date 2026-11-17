@@ -1,6 +1,6 @@
 codigo,nome,variedade,unidade,preco,sinonimos,descricao_visual
 1001,Banana,Prata,kg,6.49,banana prata;banana-prata,"casca amarela fina com quinas marcadas, frutos médios e retos, ponta escura"
-1002,Banana,Nanica,kg,4.99,banana nanica;banana d'água;banana caturra,"casca amarela com pintas marrons quando madura, frutos longos e curvados, cachos grandes"
+1002,Banana,Caturra/Nanica,kg,4.99,banana caturra;banana nanica;banana d'água,"casca amarela com pintas marrons quando madura, frutos longos e curvados, cachos grandes"
 1003,Banana,Maçã,kg,8.99,banana maçã;banana-maçã,"casca amarela clara e fina, frutos pequenos e gordinhos, levemente arredondados"
 1004,Banana,Da Terra,kg,7.49,banana da terra;banana-da-terra;banana comprida,"frutos muito grandes e grossos, casca amarela a esverdeada, usada para cozinhar"
 1010,Maçã,Gala,kg,9.99,maçã gala;maçã nacional,"casca vermelha rajada com fundo amarelado, tamanho médio, formato arredondado"
